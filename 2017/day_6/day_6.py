@@ -49,11 +49,14 @@ def redistribute_blocks(starting_config):
 		redistributions += 1
 
 		if(current_config in past_configs):
+			first_instance = past_configs.index(current_config)
+			second_instance = len(past_configs)
+			loop_size = second_instance - first_instance
 			break
 		else:
 			past_configs.append(list(current_config))
 
-	return redistributions
+	return redistributions, loop_size
 
 cleaned_input = process_input(puzzle_input)
 print(redistribute_blocks(cleaned_input))
